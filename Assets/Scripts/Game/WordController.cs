@@ -11,6 +11,7 @@ public class WordController : MonoBehaviour
         {
             for (int i = 0; i < CharCubes.Length; i++){
                 CharCubes[i].Open();
+                
             }
         }
     }

@@ -12,7 +12,7 @@ public class WordSpawner : MonoBehaviour{
 
     void Start()
     {
-        SpawnWord("5121255");
+        SpawnWord("gasfffs");
     }
     public void SpawnWord(string word){
         List<CharCube> cubes = new List<CharCube>();

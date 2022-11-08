@@ -1,12 +1,19 @@
 using UnityEngine;
 [RequireComponent(typeof(GlowCube))]
+[RequireComponent(typeof(TextCube))]
 public class CharCube : MonoBehaviour{
-    public char Character{get;set;}
+    public char Character{
+        set {
+            _textCube.Character = value; 
+        }
+    }
     public bool IsOpen{get; private set;}
-    GlowCube glowCube;
+    GlowCube _glowCube;
+    TextCube _textCube;
     bool _rotationIsActive;
     void Awake(){
-        glowCube = GetComponent<GlowCube>();
+        _glowCube = GetComponent<GlowCube>();
+        _textCube = GetComponent<TextCube>();
     }
 
     void Update(){
@@ -20,14 +27,15 @@ public class CharCube : MonoBehaviour{
     public void Open(){
         IsOpen = true;
         _rotationIsActive = true;
-        glowCube.Glow(Color.green);
+        _textCube.Active = true;
+        _glowCube.Glow(Color.green);
     }   
 
     void Rotation(){
         if(_rotationIsActive){
             transform.Rotate(0f, (180*Time.deltaTime)/2.5f, 0);
             if( transform.eulerAngles.y > 90){
-                transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+                transform.rotation = Quaternion.Euler(new Vector3(0,90,0));
                 _rotationIsActive = false;
             }
         }
