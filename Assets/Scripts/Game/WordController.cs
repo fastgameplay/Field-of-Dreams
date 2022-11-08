@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class WordController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public CharCube[] CharCubes;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            for (int i = 0; i < CharCubes.Length; i++){
+                CharCubes[i].Open();
+            }
+        }
     }
 }
