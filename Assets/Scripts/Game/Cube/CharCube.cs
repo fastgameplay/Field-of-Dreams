@@ -4,10 +4,17 @@ using UnityEngine;
 public class CharCube : MonoBehaviour{
     public char Character{
         set {
-            _textCube.Character = value; 
+            _textCube.Character = _character = value; 
         }
+        get{
+            return _character;
+        }
+        
     }
+
     public bool IsOpen{get; private set;}
+    
+    char _character;
     GlowCube _glowCube;
     TextCube _textCube;
     bool _rotationIsActive;
@@ -20,15 +27,17 @@ public class CharCube : MonoBehaviour{
         Rotation();
     }
 
-    void GlowRed(){
-
+    public void GlowRed(){
+        _glowCube.Glow(Color.red);
     }
-
+    public void GlowGreen(){
+        _glowCube.Glow(Color.green);
+    }
     public void Open(){
         IsOpen = true;
         _rotationIsActive = true;
         _textCube.Active = true;
-        _glowCube.Glow(Color.green);
+        GlowGreen();
     }   
 
     void Rotation(){

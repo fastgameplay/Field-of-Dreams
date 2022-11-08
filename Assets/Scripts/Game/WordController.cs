@@ -5,7 +5,19 @@ using UnityEngine;
 public class WordController : MonoBehaviour
 {
     public CharCube[] CharCubes;
-
+    [SerializeField] GameController gameController; //:(
+    int CharPressed {
+        set{
+            _charPressed = value;
+            if(_charPressed == CharCubes.Length){
+                foreach (CharCube i in CharCubes) i.GlowGreen();
+                _charPressed = 0;
+                gameController.RestartGame();
+            }
+        }
+        get{return _charPressed;}
+    }
+    int _charPressed;
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -15,4 +27,22 @@ public class WordController : MonoBehaviour
             }
         }
     }
+
+    public void KeyPressed(char key){
+        int keyInWord = 0;
+        foreach (CharCube i in CharCubes){
+            if (i.Character == key){
+                i.Open();
+                keyInWord++;
+            }
+        }
+        if(keyInWord == 0){
+            foreach (CharCube i in CharCubes){
+                i.GlowRed();
+            } 
+        }
+        CharPressed += keyInWord;
+    }
+
+   
 }

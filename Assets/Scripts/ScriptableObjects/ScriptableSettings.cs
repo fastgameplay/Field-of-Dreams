@@ -6,15 +6,15 @@ public class ScriptableSettings : ScriptableObject{
     [SerializeField] TextAsset _txtFile;
     [SerializeField] int _minWordLength;
 
-    public string[] GetWordsArray(){
+    public List<string> GetWords(){
         string[] allWords = _txtFile.text.Split(new char[] {',',';','-',' ','.','?','!','`','\'','\"','*','`', ':' , '(', ')', '\r', '\n'});
         List<string> output = new List<string>();
         for (int i = 0; i < allWords.Length; i++){
             if(allWords[i].Length > _minWordLength){
-                if(output.Contains(allWords[i].ToLower()) == false)
-                    output.Add(allWords[i].ToLower());
+                if(output.Contains(allWords[i].ToUpper()) == false)
+                    output.Add(allWords[i].ToUpper());
             }
         }
-        return output.ToArray();
+        return output;
     }
 }

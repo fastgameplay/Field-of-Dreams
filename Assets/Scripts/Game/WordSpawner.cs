@@ -6,14 +6,13 @@ public class WordSpawner : MonoBehaviour{
     [SerializeField] CharCube _charCubePrefab;
     WordController _wordController;
 
+    CharCube[] _charCubes;
+
     void Awake(){
         _wordController = GetComponent<WordController>();
     }
 
-    void Start()
-    {
-        SpawnWord("gasfffs");
-    }
+
     public void SpawnWord(string word){
         List<CharCube> cubes = new List<CharCube>();
 
@@ -31,5 +30,13 @@ public class WordSpawner : MonoBehaviour{
             transform.position = new Vector3(0,5,10.1f);
         }
         _wordController.CharCubes = cubes.ToArray();
+        _charCubes = cubes.ToArray();
+    }
+
+    public void DestroyWord(){
+        foreach(CharCube i in _charCubes){
+            Destroy(i.gameObject);
+        }
+        _charCubes = new CharCube[0];
     }
 }
