@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(GlowCube))]
 public class CharCube : MonoBehaviour{
-    public char Character{get{return _character;} set{ _character = value;} }
+    public char Character{get;set;}
     public bool IsOpen{get; private set;}
-    char _character;
+    GlowCube glowCube;
     bool _rotationIsActive;
+    void Awake(){
+        glowCube = GetComponent<GlowCube>();
+    }
 
     void Update(){
         Rotation();
@@ -15,14 +16,11 @@ public class CharCube : MonoBehaviour{
     void GlowRed(){
 
     }
-    void GlowGreen(){
-
-    }
 
     public void Open(){
         IsOpen = true;
         _rotationIsActive = true;
-        GlowGreen();
+        glowCube.Glow(Color.green);
     }   
 
     void Rotation(){
