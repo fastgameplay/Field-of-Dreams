@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LivesManager : MonoBehaviour{
     [SerializeField] Text _livesText;
-    [SerializeField] int _livesPerWord;
+    [SerializeField] ScriptableSettings settings;
     GameController _gameController;
     public int Lives{
         get{
@@ -20,6 +20,6 @@ public class LivesManager : MonoBehaviour{
     }
 
     public void ResetLives(){
-        Lives = _livesPerWord;
+        Lives = settings.LivesPerRound;
     }
 }

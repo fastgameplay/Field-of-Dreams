@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(LivesManager))]
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameCycle : MonoBehaviour
 {
-    [SerializeField] GameObject _GameOverText;
+    [SerializeField] Text _GameOverText;
     [SerializeField] WordManager _wordManager;
     [SerializeField] Keyboard _keyboard;
     ScoreManager _scoreManager;
@@ -24,6 +25,7 @@ public class GameCycle : MonoBehaviour
 
     public void RestartRound(){
         if(_wordManager.WordsInBase == 0){
+            _GameOverText.text = "YOU WON!!";
             EndGame();
             return;
         }
@@ -43,7 +45,7 @@ public class GameCycle : MonoBehaviour
 
     IEnumerator IEEndGame(){
         _keyboard.Active = false;
-        _GameOverText.SetActive(true);
+        _GameOverText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(0);
 

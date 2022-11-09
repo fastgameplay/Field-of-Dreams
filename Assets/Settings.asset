@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b16b0093ebf34f908e6f643e27806, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
+  LivesPerRound: 15
   _txtFile: {fileID: 4900000, guid: 92517d0271f3ef84a9ce6b28c5321d43, type: 3}
   _minWordLength: 3
+  _banWords:
+  - The
+  - the

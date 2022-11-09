@@ -4703,7 +4703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _livesText: {fileID: 1905568680}
-  _livesPerWord: 15
+  settings: {fileID: 11400000, guid: de1cbad825235a543a3e88252aa3d476, type: 2}
 --- !u!114 &1304943005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4716,7 +4716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7288428a018aa41900314fbc9bd5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameOverText: {fileID: 888861577}
+  _GameOverText: {fileID: 888861579}
   _wordManager: {fileID: 1833417266}
   _keyboard: {fileID: 922959261}
 --- !u!1 &1439406808
