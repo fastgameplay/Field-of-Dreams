@@ -6,7 +6,7 @@ public class WordSpawner : MonoBehaviour{
     [SerializeField] CharCube _charCubePrefab;
     WordController _wordController;
 
-    CharCube[] _charCubes;
+    CharCube[] _charCubes = new CharCube[0];
 
     void Awake(){
         _wordController = GetComponent<WordController>();

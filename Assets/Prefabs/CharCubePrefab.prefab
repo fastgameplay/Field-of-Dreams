@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _standartColor: {r: 1, g: 1, b: 1, a: 1}
   _smoothness: 0.01
-  _glowDuration: 1
+  _glowDuration: 0.8
 --- !u!114 &4408051711440644636
 MonoBehaviour:
   m_ObjectHideFlags: 0

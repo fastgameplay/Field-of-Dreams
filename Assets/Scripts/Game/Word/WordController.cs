@@ -5,45 +5,42 @@ using UnityEngine;
 public class WordController : MonoBehaviour
 {
     public CharCube[] CharCubes;
-    [SerializeField] GameController gameController; //:(
-    int CharPressed {
+    [SerializeField] GameController _gameController; 
+    int OpenCharacters {
         set{
-            _charPressed = value;
-            if(_charPressed == CharCubes.Length){
-                foreach (CharCube i in CharCubes) i.GlowGreen();
-                _charPressed = 0;
-                gameController.WinRestartGame();
-            }
+            _openCharacters = value;
+            WinCheck();
         }
-        get{return _charPressed;}
+        get{return _openCharacters;}
     }
-    int _charPressed;
-    void Update(){
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < CharCubes.Length; i++){
-                CharCubes[i].Open();
-                
-            }
-        }
-    }
+    int _openCharacters;
 
-    public void KeyPressed(char key){
-        int keyInWord = 0;
+
+
+    public void KeyPressed(char ch){
+        int charInWord = 0;
         foreach (CharCube i in CharCubes){
-            if (i.Character == key){
+            if (i.Character == ch){
                 i.Open();
-                keyInWord++;
+                charInWord++;
             }
         }
-        if(keyInWord == 0){
-            foreach (CharCube i in CharCubes){
-                i.GlowRed();
-            } 
-            gameController.WrongButton();
+        if(charInWord == 0){
+            WrongButton();
         }
-        CharPressed += keyInWord;
-    }
 
+        OpenCharacters += charInWord;
+    }
+    void WrongButton(){
+        foreach (CharCube i in CharCubes) i.GlowRed();
+        _gameController.WrongButton();
+    }
+    void WinCheck(){
+        if(_openCharacters == CharCubes.Length){
+            foreach (CharCube i in CharCubes) i.GlowGreen();
+            _gameController.WinRound();
+            _openCharacters = 0;
+        }
+    }
    
 }
