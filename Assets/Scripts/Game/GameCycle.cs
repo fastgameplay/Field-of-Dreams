@@ -23,6 +23,10 @@ public class GameCycle : MonoBehaviour
     }
 
     public void RestartRound(){
+        if(_wordManager.WordsInBase == 0){
+            EndGame();
+            return;
+        }
         StartCoroutine(IERestartRound());
     }
     public void EndGame(){

@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(WordSpawner))]
 public class WordManager : MonoBehaviour{
+    public int WordsInBase{get{return _availableWords.Count;}}
     [SerializeField] ScriptableSettings _settings;
     WordSpawner _wordSpawner;
 
@@ -28,6 +29,7 @@ public class WordManager : MonoBehaviour{
     string GetWord(int index){
         string str = _availableWords[index];
         _availableWords.RemoveAt(index);
+        
         return str;
     }
     
