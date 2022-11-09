@@ -12,7 +12,7 @@ public class WordController : MonoBehaviour
             if(_charPressed == CharCubes.Length){
                 foreach (CharCube i in CharCubes) i.GlowGreen();
                 _charPressed = 0;
-                gameController.RestartGame();
+                gameController.WinRestartGame();
             }
         }
         get{return _charPressed;}
@@ -40,6 +40,7 @@ public class WordController : MonoBehaviour
             foreach (CharCube i in CharCubes){
                 i.GlowRed();
             } 
+            gameController.WrongButton();
         }
         CharPressed += keyInWord;
     }
